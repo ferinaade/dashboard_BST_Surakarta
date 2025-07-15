@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sistem Informasi Halte Bus BST</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../../vendors/css/materialdesignicons.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="../../js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <!-- endinject 
+  <link rel="shortcut icon" href="images/favicon.png" /> -->
+  <!-- qgis2web  -->
+  <!--charts-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  #map {
+    all: unset;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    z-index: 0;
+  }
+</style>
+</head>
+
+<body>
+   <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+
+      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-center">
+        <!-- Button menu tetap di kiri -->
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-start">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+
+        <!-- Spacer kosong di tengah -->
+        <div class="flex-grow-1"></div>
+
+        <!-- Logo + tulisan di kanan -->
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo d-flex" href="index.html">
+            <img src="../../images/logo_ugm.png" class="mr-2" alt="logo" style="height:40px;"/>
+            <div class="d-flex flex-column ms-2 text-start">
+              <span style="font-weight:bold; color:#333; font-size:14px; line-height:1.5; text-align: left;">
+                Teknik Geodesi
+              </span>
+              <span style="color:#555; font-size:12px; line-height:1.2;">
+                Universitas Gadjah Mada
+              </span>
+            </div>
+          </a>
+        </div>
+      </nav>
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+        </div>
+      </div>
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+          <!-- To do section tab ends -->
+          <!-- chat tab ends -->
+      </div>
+      <!-- partial -->
+
+     <!-- partial:partials/_sidebar.html -->
+
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+        <style>
+          .sidebar { width: 260px; transition: width 0.2s ease; }
+          body.sidebar-icon-only .sidebar { width: 60px; }
+          body.sidebar-icon-only .sidebar .nav .nav-item .nav-link { justify-content: center; }
+        </style>
+		
+        <ul class="nav">
+		<li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title"> Beranda </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/typography.html">
+              <i class="mdi mdi-bus menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Sebaran Halte Bus</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/dropdowns.html">
+              <i class="mdi mdi-school menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Aksesibilitas Pendidikan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/buttons.html">
+              <i class="mdi mdi-map-marker-radius menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Rekomendasi</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+                      <!-- section peta sebaran -->
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <!-- Peta Sebaran Halte -->
+                <h4 class="card-description font-weight-bold text-center" style="color:black">Peta Isochrone Halte Bus BST</h4>
+                <!-- Div Map -->
+                <iframe src="qgis2web_peta2/index.html" width="100%" height="450px" frameborder="0" style="border-radius: 12px;" ></iframe>
+
+                <!-- Tombol Layar Penuh -->
+                <div class="d-flex justify-content-center">
+                  <a href="qgis2web_peta2/index.html" target="_blank" class="btn btn-info btn-rounded btn-fw mt-3" > Tampilan Penuh </a>
+                </div>
+                </div>
+            </div>
+          </div>
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <!-- KIRI: Text & Pie -->
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <h5 class="card-title text-center">Aksesibilitas Prasarana Pendidikan</h5>
+                <p class="text-dark" style="text-align: justify;">
+                  Tingkat aksesibilitas layanan transportasi publik terhadap prasarana pendidikan dianalisis melalui pendekatan spasial menggunakan area isochrone, 
+                  dengan jangkauan waktu tempuh 5 menit berjalan kaki dari masing-masing titik halte bus BST.
+                  Dari total 427 titik prasarana pendidikan, terdapat 243 titik yang berada dalam jangkauan isochrone.
+                  Sekitar 43% prasarana pendidikan yang ada di Kota Surakarta belum dapat diakses dari halte bus BST dengan berjalan kaki selama 5 menit. 
+                  Hal ini menunjukkan aksesibilitas prasarana pendidikan dari halte bus BST berada pada kategori sedang menuju rendah
+                </p>
+                <h6 class=" mt-4">Diagram perbandingan jumlah lokasi pendidikan terjangkau halte bus BST</h6>
+                <div class="d-flex justify-content-center">
+                  <canvas id="pieChart" style="width: 100%; max-width: 300px; height: 300px; margin-top: 3;"></canvas>
+                  <script>
+                    const ctx = document.getElementById('pieChart').getContext('2d');
+                    const pieChart = new Chart(ctx, {
+                      type: 'pie',
+                      data: {
+                        labels: ['Terjangkau', 'Tidak Terjangkau'],
+                        datasets: [{
+                          label: 'Aksesibilitas',
+                          data: [243, 184],
+                          backgroundColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)'],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        responsive: false,
+                        plugins: {
+                          legend: {
+                            position: 'bottom'
+                          },
+                          tooltip: {
+                            callbacks: {
+                              label: function (context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const total = context.chart._metasets[0].total;
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ${value} lokasi (${percentage}%)`;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    });
+                  </script>   
+                </div>     
+              </div>
+            </div>
+          </div>
+
+        <!-- KANAN: Table -->
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <h5 class="card-title text-center font-weight-bold text-dark">
+                  Prasarana pendidikan yang terlayani halte bus BST
+                </h5>
+                <div class="table-responsive">
+                  <table class="table table-hover text-center">
+                    <thead>
+                      <tr>
+                        <th>Tingkat Pendidikan</th>
+                        <th>Jumlah</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td class="text-sm-left">Sekolah Dasar/Madrasah Ibtidaiyah</td><td>114</td></tr>
+                      <tr><td class="text-sm-left">Sekolah Menengah Pertama/Madrasah Tsanawiyah</td><td>46</td></tr>
+                      <tr><td class="text-sm-left">Sekolah Menengah Atas/Madrasah Aliyah</td><td>24</td></tr>
+                      <tr><td class="text-sm-left">Sekolah Menengah Kejuruan </td><td>33</td></tr>
+                      <tr><td class="text-sm-left">Sekolah Luar Biasa</td><td>6</td></tr>
+                      <tr><td class="text-sm-left">Akademi</td><td>4</td></tr>
+                      <tr><td class="text-sm-left">Institut</td><td>2</td></tr>
+                      <tr><td class="text-sm-left">Universitas</td><td>7</td></tr>
+                      <tr><td class="text-sm-left">Sekolah Tinggi</td><td>4</td></tr>
+                      <tr><td class="text-sm-left">Politeknik</td><td>3</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- content-wrapper ends -->
+
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. 
+              All rights reserved.  Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block mt-2"> Skripsi Ferina Ade Ratri </span> 
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+
+<!-- Plugin js for this page -->
+<script src="../../vendors/chart.js/Chart.min.js"></script>
+<script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="../../js/dataTables.select.min.js"></script>
+<!-- End plugin js for this page -->
+
+<!-- inject:js -->
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/hoverable-collapse.js"></script>
+<script src="../../js/template.js"></script>
+<script src="../../js/settings.js"></script>
+<script src="../../js/todolist.js"></script>
+<!-- endinject -->
+
+<!-- Custom js for this page -->
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/Chart.roundedBarCharts.js"></script>
+<!-- End custom js for this page -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sistem Informasi Halte Bus BST</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../../vendors/css/materialdesignicons.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="../../js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  
+  <!-- endinject 
+  <link rel="shortcut icon" href="images/favicon.png" /> -->
+  <!-- qgis2web  -->
+
+  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css"> 
+
+  <style>
+    /* ========== LOGO + TEKS DI NAVBAR ========== */
+
+    /* Gunakan warna latar dari navbar */
+    .navbar-brand-wrapper {
+      background-color: inherit !important;
+    }
+
+    /* Warna teks default (light mode) */
+    .brand-title {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* Saat dark mode sidebar aktif, ubah warna teks agar kontras */
+    .sidebar-dark .brand-title,
+    .sidebar-dark .brand-subtitle {
+      color: #fff !important;
+    }
+
+    /* (Opsional) Tambahkan transisi agar lebih halus */
+    .brand-title, .brand-subtitle {
+      transition: color 0.3s ease;
+    }
+  </style>
+
+</head>
+
+<body>
+   <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+
+      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-center">
+        <!-- Button menu tetap di kiri -->
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-start">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+
+        <!-- Spacer kosong di tengah -->
+        <div class="flex-grow-1"></div>
+
+        <!-- Logo + tulisan di kanan -->
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo d-flex" href="index.html">
+            <img src="../../images/logo_ugm.png" class="mr-2" alt="logo" style="height:40px;"/>
+            <div class="d-flex flex-column ms-2 text-start">
+              <span style="font-weight:bold; color:#333; font-size:14px; line-height:1.5; text-align: left;">
+                Teknik Geodesi
+              </span>
+              <span style="color:#555; font-size:12px; line-height:1.2;">
+                Universitas Gadjah Mada
+              </span>
+            </div>
+          </a>
+        </div>
+      </nav>
+
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+        </div>
+      </div>
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+          <!-- To do section tab ends -->
+          <!-- chat tab ends -->
+      </div>
+      <!-- partial -->
+
+     <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+        <style>
+          .sidebar { width: 260px; transition: width 0.2s ease; }
+          body.sidebar-icon-only .sidebar { width: 60px; }
+          body.sidebar-icon-only .sidebar .nav .nav-item .nav-link { justify-content: center; }
+        </style>
+
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title"> Beranda </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/typography.html">
+              <i class="mdi mdi-bus menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Sebaran Halte Bus</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/dropdowns.html">
+              <i class="mdi mdi-school menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Aksesibilitas Pendidikan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../pages/ui-features/buttons.html">
+              <i class="mdi mdi-map-marker-radius menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Rekomendasi</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+
+          <!-- section peta sebaran -->
+          <div class="col-md-6 grid-margin stretch-card d-flex flex-column">
+            <div class="card">
+              <div class="card-body">
+                <!-- Peta Sebaran Halte -->
+                <h4 class="card-description font-weight-bold text-center" style="color:black">Peta Trayek dan Sebaran Halte Bus BST</h4>
+                <!-- Div Map -->
+                <iframe src="qgis2web_peta1/index.html" width="100%" height="450px" frameborder="0" style="border-radius: 12px;" ></iframe>
+
+                <!-- Tombol Layar Penuh -->
+                <div class="d-flex justify-content-center">
+                  <a href="qgis2web_peta1/index.html" target="_blank" class="btn btn-info btn-rounded btn-fw mt-3" > Tampilan Penuh </a>
+                </div> 
+              </div>
+            </div>
+          
+          
+          <!-- Card baru untuk paragraf -->
+            <div class="card mt-3">
+              <div class="card-body">
+                <p style="text-align: justify; margin-bottom: 0;">
+                  Jumlah halte bus BST yang melayani enam koridor mencapai 393 halte bus. Lokasi halte tidak hanya di dalam wilayah Kota Surakarta, tetapi juga tersebar di wilayah Kabupaten Sukoharjo, Kabupaten Boyolali, dan Kabupaten Karanganyar.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- section tabel halte -->
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-description font-weight-bold text-center" style="color:black" >Jumlah Halte Bus BST pada setiap Koridor</h4>
+                  <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                      <thead>
+                        <tr>
+                          <th>Koridor</th>
+                          <th>Arah</th>
+                          <th>Jumlah Halte Bus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="2">Koridor 1</td>
+                          <td class="text-sm-left"> Bandara Adi Soemarmo</td>
+                          <td>66</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Palur</td>
+                          <td>57</td>
+                        </tr>
+                          <td rowspan="2">Koridor 2</td>
+                          <td class="text-sm-left">Terminal Kerten</td>
+                          <td>38</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Palur</td>
+                          <td>49</td>
+                        </tr>
+                          <td rowspan="2">Koridor 3</td>
+                          <td class="text-sm-left">RS. Jiwa / Taman Lansia</td>
+                          <td>54</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Kartasura</td>
+                          <td>50</td>
+                        </tr>
+                            <td rowspan="2">Koridor 4</td>
+                          <td class="text-sm-left">Terminal Palur</td>
+                          <td>50</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Kartasura</td>
+                          <td>54</td>
+                        </tr>
+                            <td rowspan="2">Koridor 5</td>
+                          <td class="text-sm-left">Simpang Sidan</td>
+                          <td>53</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Kartasura</td>
+                          <td>52</td>
+                        </tr>
+                            <td rowspan="2">Koridor 6</td>
+                          <td class="text-sm-left">Solo Baru</td>
+                          <td>31</td>
+                        </tr>
+                        <tr>
+                          <td class="text-sm-left">Terminal Tirtonadi</td>
+                          <td>27</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- end section -->
+
+        <!-- content-wrapper ends -->
+
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. 
+              All rights reserved.  Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block mt-2"> Skripsi Ferina Ade Ratri </span> 
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+
+<!-- Plugin js for this page -->
+<script src="../../vendors/chart.js/Chart.min.js"></script>
+<script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="../../js/dataTables.select.min.js"></script>
+<!-- End plugin js for this page -->
+
+<!-- inject:js -->
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/hoverable-collapse.js"></script>
+<script src="../../js/template.js"></script>
+<script src="../../js/settings.js"></script>
+<script src="../../js/todolist.js"></script>
+<!-- endinject -->
+
+<!-- Custom js for this page -->
+<script src="../../js/dashboard.js"></script>
+<script src="../../js/Chart.roundedBarCharts.js"></script>
+<!-- End custom js for this page -->
+
+
+</body>
+
+</html>

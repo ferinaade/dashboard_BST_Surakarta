@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sistem Informasi Halte Bus BST</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+
+    <style>
+    /* ========== LOGO + TEKS DI NAVBAR ========== */
+
+    /* Gunakan warna latar dari navbar */
+    .navbar-brand-wrapper {
+      background-color: inherit !important;
+    }
+
+    /* Warna teks default (light mode) */
+    .brand-title {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* Saat dark mode sidebar aktif, ubah warna teks agar kontras */
+    .sidebar-dark .brand-title,
+    .sidebar-dark .brand-subtitle {
+      color: #fff !important;
+    }
+
+    /* (Opsional) Tambahkan transisi agar lebih halus */
+    .brand-title, .brand-subtitle {
+      transition: color 0.3s ease;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+
+      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex align-items-center" >
+        <!-- Button menu tetap di kiri -->
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-start">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+
+        <!-- Spacer kosong di tengah -->
+        <div class="flex-grow-1"></div>
+
+        <!-- Logo + tulisan di kanan -->
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo d-flex" href="index.html">
+            <img src="images/logo_ugm.png" class="mr-2" alt="logo" style="height:40px;"/>
+            <div class="d-flex flex-column ms-2 text-start">
+              <span style="font-weight:bold; color:#333; font-size:14px; line-height:1.5; text-align: left;">
+                Teknik Geodesi
+              </span>
+              <span style="color:#555; font-size:12px; line-height:1.2;">
+                Universitas Gadjah Mada
+              </span>
+            </div>
+          </a>
+        </div>
+      </nav>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+        </div>
+      </div>
+      
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+            <div class="add-items d-flex px-3 mb-0">
+              <form class="form w-100">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+          <!-- To do section tab ends -->
+
+          <!-- chat tab ends -->
+        </div>
+      </div>
+      <!-- partial -->
+       
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+        <style>
+          .sidebar { width: 260px; transition: width 0.2s ease; }
+          body.sidebar-icon-only .sidebar { width: 60px; }
+          body.sidebar-icon-only .sidebar .nav .nav-item .nav-link { justify-content: center; }
+        </style>
+
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title"> Beranda </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/typography.html">
+              <i class="mdi mdi-bus menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Sebaran Halte Bus</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/dropdowns.html">
+              <i class="mdi mdi-school menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Aksesibilitas Pendidikan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/ui-features/buttons.html">
+              <i class="mdi mdi-map-marker-radius menu-icon" style="font-size:20px;"></i>
+              <span class="menu-title">Rekomendasi</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-12 mb-4 mb-xl-0">
+                  <h4 class="font-weight-bold mb-4">Selamat Datang</h4>
+                  <h4 class="font-weight-bold">   </h4>
+                  <h2 class="font-weight-bold mt-4"> Dashboard Halte Bus BST dan Prasarana Pendidikan Kota Surakarta</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card-people">
+                  <img src="images/dashboard/bus.jpg" alt="people">
+                </div>
+            </div>
+            <div class="col-md-6 grid-margin transparent">
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                     <!-- <h4 class="card-title"> Deskripsi </h4> -->
+                      <p>
+                        Batik Solo Trans (BST) adalah layanan bus raya terpadu yang beroperasi di wilayah Kota Surakarta. 
+                        BST memiliki beberapa koridor yang melayani berbagai rute di dalam kota dan sekitarnya. 
+                        Enam koridor utama BST meliputi:
+                      </p>
+                  <ul class="list-arrow">
+                    <li>Koridor 1: Bandara Adi Soemarmo ⇌ Terminal Palur</li>
+                    <li>Koridor 2: Sub Terminal Kerten ⇌ Terminal Palur</li>
+                    <li>Koridor 3: Terminal Kartasura ⇌ RS. Jiwa / Taman Lansia</li>
+                    <li>Koridor 4: Terminal Kartasura ⇌ Terminal Palur </li>
+                    <li>Koridor 5: Terminal Kartasura ⇌ Simpang Sidan</li>
+                    <li>Koridor 6: Terminal Tirtonadi ⇌ RS Indriati Solo Baru</li>
+                  </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Informasi Dashboard</h4>
+                  <h6 class="mb-4">Berikut ini merupakan komponen utama dari evaluasi transportasi publik terhadap pendidikan di Kota Surakarta.</h6>
+
+                  <!-- Card kecil di dalam card utama -->
+                  <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-md-4">
+                      <div class="card bg-info text-white">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <a href="pages/ui-features/typography.html" class="text-black text-decoration-none">Sebaran Halte Bus BST</a> </h5>
+                          <div class="media">
+                            <i class="ti-world icon-md d-flex align-self-center mr-3 text-white"></i>
+                            <div class="media-body">
+                              <p class="card-text">Menunjukkan peta lokasi halte bus dan koridor sistem transportasi Batik Solo Trans.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-4">
+                      <div class="card bg-success text-white">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <a href="pages/ui-features/dropdowns.html" class="text-black text-decoration-none">Aksesibilitas Prasarana Pendidikan</a> </h5>
+                          <div class="media">
+                            <i class="ti-world icon-md d-flex align-self-center mr-3 text-white"></i>
+                            <div class="media-body">
+                              <p class="card-text">Aksesibilitas fasilitas pendidikan di Kota Surakarta berdasarkan layanan transportasi publik Batik Solo Trans.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-4">
+                      <div class="card bg-warning text-dark">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <a href="pages/ui-features/buttons.html" class="text-black text-decoration-none">Rekomendasi Lokasi Halte Baru</a> </h5>
+                          <div class="media">
+                            <i class="ti-world icon-md d-flex align-self-center mr-3 text-dark"></i>
+                            <div class="media-body">
+                              <p class="card-text">Sebagai upaya peningkatan keterjangkauan layanan transportasi publik bagi sektor pendidikan.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- row -->
+                </div> <!-- card-body utama -->
+              </div> <!-- card utama -->
+            </div> <!-- col-md-12 -->
+
+      
+            <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. 
+              All rights reserved.  Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
+          </div>
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block mt-2"> Skripsi Ferina Ade Ratri </span> 
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+
