@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- REKOMENDASI-->
+
 <html lang="en">
 
 <head>
@@ -152,116 +154,36 @@
               </div>
             </div>
                       <!-- section chart -->
-            <div class="col-md-6 grid-margin stretch-card">
-            <div class="card w-100 d-flex flex-column">
-              <div class="card-body d-flex flex-column" >
-                <h4 class="card-title">Rekomendasi area untuk halte bus baru</h4>
-                <p class="text-dark" style="text-align: justify;">
-                  Upaya peningkatan keterjangkauan layanan transportasi publik bagi sektor pendidikan dapat dilakukan dengan penambahan titik halte baru.
-                  Penentuan lokasi halte potensial dapat dilakukan melalui pendekatan logika fuzzy, yang memungkinkan penggabungan beberapa parameter spasial.
-                  Peta kesesuaian lokasi halte baru ditunjukkan dalam tiga kelas, yaitu "Sangat Sesuai", "Sesuai", dan "Tidak Sesuai" 
-                </p>
-                <h5 class=" mt-4 "> Diagram luas area kesesuaian </h5>
-                <div class="d-flex justify-content-center mb-0">
-                  <canvas id="pieChart" style="width: 100%; max-width: 300px; height: 300px;"></canvas>
-                  <script>
-                    const ctx = document.getElementById('pieChart').getContext('2d');
-                    const pieChart = new Chart(ctx, {
-                      type: 'pie',
-                      data: {
-                        labels: ['Sangat Sesuai', 'Sesuai', 'Tidak Sesuai'],
-                        datasets: [{
-                          label: 'Kesesuaian',
-                          data: [277.74, 2580.24, 1722.35],
-                          backgroundColor: ['rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255,99,132,1)'],
-                          borderWidth: 1
-                        }]
-                      },
-                      options: {
-                        responsive: false,
-                        plugins: {
-                          legend: {
-                            position: 'bottom'
-                          },
-                          tooltip: {
-                            callbacks: {
-                              label: function (context) {
-                                const label = context.label || '';
-                                const value = context.parsed;
-                                const total = context.chart._metasets[0].total;
-                                const percentage = ((value / total) * 100).toFixed(1);
-                                return `${label}: ${value} ha (${percentage}%)`;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    });
-                  </script>   
-                </div>     
-              </div>
-            </div>
-          </div>
-          <!-- end section -->
+                        <div class="col-md-6 grid-margin stretch-card">
+              <div class="card w-100 d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title">Rekomendasi Jalur BST Baru</h4>
+                  <p class="text-dark" style="text-align: justify;">
+                    Sebagian besar prasarana pendidikan yang belum terlayani halte bus BST berada di wilayah <strong>Kecamatan Banjarsari bagian utara, Kecamatan Jebres bagian Selatan, 
+                    dan sebagian besar kecamatan Pasar Kliwon.</strong> Wilayah tersebut tidak terlayani halte bus karena berada di luar cakupan trayek operasional BST. Oleh karena itu, langkah 
+                    pengembangan yang lebih tepat adalah merumuskan rekomendasi jalur baru untuk meningkatkan aksesibilitas, khususnya terhadap prasarana pendidikan di wilayah tersebut. 
+                  </p>
 
-            <div class="col-md-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-description font-weight-bold" style="color:black" > Titik Rekomendasi Halte Bus Baru</h4>
+                  <h5 class="mt-4">Tabel Cakupan Jalur Rekomendasi</h5>
                   <div class="table-responsive">
-                    <table class="table text-center">
-                      <tr>
-                        <th rowspan="2">No</th>
-                        <th rowspan="2">Nama Halte Alternatif</th>
-                        <th colspan="2">Koordinat</th>
-                        <th rowspan="2">Jumlah Sekolah Terlayani</th>
-                      </tr>
-                      <tr>
-                        <th>X (m)</th>
-                        <th>Y (m)</th>
-                      </tr>
-                      <tr>
+                    <table class="table table-hover text-center">
+                      <thead>
                         <tr>
-                          <td>1</td>
-                          <td>Halte Bus 1</td>
-                          <td>479777,002 </td>
-                          <td>9165394,600 </td>
-                          <td>2</td>
+                          <th>Jalur</th>
+                          <th>Panjang Jalur (km)</th>
+                          <th>Jumlah Prasarana<br>Pendidikan Terlayani</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-sm-left">Jalur Alternatif 1</td>
+                          <td>13,95</td>
+                          <td>49</td>
                         </tr>
                         <tr>
-                          <td>2</td>
-                          <td>Halte Bus 2</td>
-                          <td>481100,285 </td>
-                          <td>9165331,448 </td>
-                          <td>3</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Halte Bus 3</td>
-                          <td>480174,229  </td>
-                          <td>480174,229  </td>
-                          <td>7</td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Halte Bus 4</td>
-                          <td>481555,271  </td>
-                          <td>9162747,478  </td>
-                          <td>6</td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>Halte Bus 5</td>
-                          <td>483232,007  </td>
-                          <td>9163685,982 </td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                          <td>6</td>
-                          <td>Halte Bus 6</td>
-                          <td>482691.788  </td>
-                          <td>9166777.463  </td>
-                          <td>3</td>
+                          <td class="text-sm-left">Jalur Alternatif 2</td>
+                          <td>7,17</td>
+                          <td>26</td>
                         </tr>
                       </tbody>
                     </table>
@@ -269,7 +191,7 @@
                 </div>
               </div>
             </div>
-
+          <!-- end section -->
         <!-- content-wrapper ends -->
 
         <!-- partial:../../partials/_footer.html -->
